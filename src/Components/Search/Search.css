@@ -30,6 +30,21 @@
   width: 100%;
 
 }
+.listbtn{
+  background-color: white;
+  color: rgb(77, 24, 24);
+  padding: '12px';
+     width: 100%;
+    border: none;
+     width: '100%' ;
+     height: 40px;
+     border:2px solid rgb(101, 141, 109);
+
+list-style-type: none;
+    }
+    .listbtn:hover{
+      background-color: rgb(101, 141, 109);
+    }
 .select{
   width: 60%; 
   position: absolute;
@@ -39,6 +54,7 @@
   border:2px solid rgb(101, 141, 109);
   color: rgb(83, 17, 17);;
   margin-left: 20%;
+  display: block;
 }
 .table{
   margin-top: 20px;
@@ -57,5 +73,53 @@ td, th{
 }
 .tablediv{
   width: 100%;
+
+}
+
+.r1,.r2{
+  display: flex;
+  height: auto;
+}
+.r1 label{
+  width: 180px;
+  margin-right: 20px;
+  padding: 5px;
+}
+.r1 label span{
+  color: brown;
+}
+.single{
+  /* background-color: azure; */
+  margin-left: 10%;
+  margin-top: 20px;
+  border: 1px solid rgb(243, 222, 222);
+  padding: 20px;
+  margin-right: 5%;
+}
+.r2 label{
+  width: 180px;
+
+  background-color: rgb(163, 197, 186);
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 5px;
+
+}
+.r2 label span{
+  color: brown;
+
+}
+.r0{
+  font-size: 24px;
+  text-align: left;
+  font-weight: 500;
+}
+@media screen and (max-width: 680px){
+.r1,.r2{
+  display: inline;
+}
+.r2 label{
+  background-color: white;
+}
 
 }

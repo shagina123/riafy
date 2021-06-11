@@ -1,6 +1,7 @@
 import React from 'react'
 import './login.css'
 import Data from '../../data'
+import swal from 'sweetalert';
 
 export default class Login extends React.Component{
     state = {
@@ -13,26 +14,32 @@ export default class Login extends React.Component{
       onSubmit = (event) => {
           let pwd=this.state.password
         let  uname=this.state.username
-       
         Data.login(uname,pwd)
         .then(response=>{
-             event.preventDefault();
-             alert(response.data.message)
-          
+            swal("Login Success!", response.data.message, "success");
+            event.preventDefault();
+            
         })
         .catch(error => {
                 
-            alert(JSON.stringify(error.response.data))
-            
+          swal("Login failed!", JSON.stringify(error.message), "warning")
+  
         })
-    
+        
+        event.preventDefault();
+
+      }
+
+      onClose=(event)=>
+      {
+        event.preventDefault();
 
       }
     render(){
         return(
             <>
 
-<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -41,12 +48,12 @@ export default class Login extends React.Component{
       </div>
       <div className="modal-body">
       <form onSubmit={this.onSubmit}>
-          <h1> My Bank</h1>
+          <h3> LOGIN</h3>
           <div className="container" id="loginContainer">
             <div className="form-group">
               <div className="row">
                 <div className="col-4">
-                  <label for="uname">User Name</label>
+                  <label htmlFor="uname">User Name</label>
                 </div>
                 <div className="col-8">
                   <input type="text" className="form-control" id="uname" placeholder="User Name" value={this.state.username} onChange={this.onUserNameChange}>
@@ -57,7 +64,7 @@ export default class Login extends React.Component{
               <div className="form-group">
                 <div className="row">
                   <div className="col-4">
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
                   <div className="col-8">
                     <input type="password" className="form-control" id="password" placeholder="Password" value={this.state.password} onChange={this.onPasswordChange}>
@@ -69,9 +76,9 @@ export default class Login extends React.Component{
                 <div className="col">
                   <div className="form-group">
                     <div className="form-check">
-                      <input type="checkbox" className="form-check-input" id="dropdownCheck"></input>
-                      <label className="form-check-label" for="dropdownCheck">
-                        Remember me
+                      {/* <input type="checkbox" className="form-check-input" id="dropdownCheck"></input> */}
+                      <label className="form-check-label" htmlFor="dropdownCheck">
+                        uname: Batman password: Iambatman
                       </label>
                     </div>
                   </div>
@@ -85,8 +92,7 @@ export default class Login extends React.Component{
         </form>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onSubmit={this.onClose}>Close</button>
       </div>
     </div>
   </div>

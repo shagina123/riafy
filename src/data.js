@@ -1,10 +1,12 @@
 import axios from 'axios'
-axios.defaults.withCredentials=true
+// var url="https://riafybackend.herokuapp.com/users";
+
+ axios.defaults.withCredentials=true
 export default class Data{
     static getNames(key)
 {
     
-    return (axios.get("http://localhost:4000/users/names",{params:{key:key}},{withCredentials:true}))
+    return (axios.get("https://riafybackend.herokuapp.com/users/names",{params:{key:key}},{withCredentials:true}))
     
   
     
@@ -13,13 +15,14 @@ export default class Data{
 }
 static search(key){
 
-    return (axios.get("http://localhost:4000/users/search",{params:{key:key}},{withCredentials:true}))
+    return (axios.get("https://riafybackend.herokuapp.com/users/search",{params:{key:key}},{withCredentials:true}))
 }
 
 
 
 static login(uname,pwd){
     
-    return axios.post("http://localhost:4000/users/login",{uname,pwd},{withCredentials:true})
+    return(axios.post("https://riafybackend.herokuapp.com/users/login",{uname,pwd},{withCredentials:true}))
+
 }
 }
